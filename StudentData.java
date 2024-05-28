@@ -66,7 +66,30 @@ public class StudentData {
   
   
   /* Returns the row containing the country and year. Returns -1 if not found. */
-  public int getRow(String countryName, String year) {
+  public int getRow(String countryName, String year) 
+  {
+    for (int i = 0; i< formattedData.length;i++)
+    {
+      boolean y = false;
+      boolean n = false;
+      for (int x = 0; x < formattedData[0].length;i++)
+      {
+        if (formattedData[i][x].equals(countryName))
+        {
+          n = true;
+        }
+        if (formattedData[i][x].equals(year))
+        {
+          y = true;
+        }
+        
+
+      }
+      if(n&&y)
+      {
+        return i;
+      }
+    }
   
     return -1;
   }
