@@ -4,10 +4,11 @@ public class CountryData
     private int year;
     private int population;
     private int[] incomeDeciles;
-    public CountryData(StudentData incomeData , String country, String y)
+    public CountryData(Data incomeData , String country, String y)
     {
             int count = 0;
             int yay = incomeData.getRow(country,y);
+            incomeDeciles= new int[10];
             for (int i = 0; i<12; i++)
             {
               if (i==0)
@@ -78,6 +79,11 @@ public class CountryData
             }
         
         }
+    public int[] getIncomeDecile()
+    {
+        return incomeDeciles;
+    }
+    
     public int totalIncome()
     {
         int total = 0;
@@ -106,8 +112,8 @@ public class CountryData
             
             yay+=total;
         }
-        ans = 1-(0.1/totalIncome());
-        return yay*ans;
+        ans = (0.1/totalIncome());
+        return 1-(yay*ans);
 
 
     }
