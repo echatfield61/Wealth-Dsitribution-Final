@@ -75,9 +75,9 @@ public class Data {
   public int getRow(String countryName, String year) 
   {
     
-    for (int i = 0; i<= formattedData.length; i++)
+    for (int i = 0; i< formattedData.length; i++)
     {
-      if (formattedData[i][0].equals(countryName)&&formattedData[i][1].equals(year))
+      if ((formattedData[i][0].equals(countryName))&&(formattedData[i][1].equals(year)))
       {
         return i+1;
       }

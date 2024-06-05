@@ -9,8 +9,9 @@ public class CountryData
             int count = 0;
             int yay = incomeData.getRow(country,y);
             incomeDeciles= new int[10];
-            for (int i = 0; i<12; i++)
+            for (int i = 0; i<13; i++)
             {
+            
               if (i==0)
                 {
                     name =(incomeData.getFormattedData()[yay][i]);
@@ -67,9 +68,17 @@ public class CountryData
                 }
                 if (i==11)
                 {
+                    
+                    incomeDeciles[count] = Integer.parseInt(incomeData.getFormattedData()[yay][i]);
+                    count++;
+                
+                }
+                if (i==11)
+                {
                     population = Integer.parseInt(incomeData.getFormattedData()[yay][i]);
                 
                 }
+               
             
         
             
@@ -96,27 +105,29 @@ public class CountryData
     }
     public double giniIndex()
     {
-        double ans = 0;
         double total = 0;
         double yay = 0;
+        if(incomeDeciles.length > 0)
+        {
         for (int t=0; t<incomeDeciles.length;t++)
         {
-            if (t == 1|| t == 10)
+            total+=incomeDeciles[t];
+            if (t == 0|| t == incomeDeciles.length -1)
             {
-                total+=incomeDeciles[t];
+                yay+=total;
             }
             else
             {
-                total+=(incomeDeciles[t])*2;
+                yay+=total*2;
             }
             
-            yay+=total;
+            
         }
-        ans = (0.1/totalIncome());
-        return 1-(yay*ans);
-
-
+        
+        return 1-((0.1/totalIncome())*yay);
     }
+    return 0;
+}
 
 }
 
