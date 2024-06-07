@@ -77,7 +77,7 @@ public class Data {
     
     for (int i = 0; i< formattedData.length; i++)
     {
-      if ((formattedData[i][0].equals(countryName))&&(formattedData[i][1].equals(year)))
+      if ((formattedData[i][0].equalsIgnoreCase(countryName))&&(formattedData[i][1].equalsIgnoreCase(year)))
       {
         return i+1;
       }
